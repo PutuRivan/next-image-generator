@@ -1,26 +1,50 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
+:root {
+  --background: #e6ebe8;
+  --foreground: #24332e;
+  --surface: #ffffff;
+  --muted: #607168;
+  --border: #c5d0c9;
+  --accent: #245945;
+  --accent-foreground: #ffffff;
+  --field: #f7f9f8;
+  --canvas: #d6dfd9;
+  --type-display: "Bahnschrift", "Aptos Display", "Trebuchet MS", sans-serif;
+  --type-body: "Aptos", "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --background: #26332e;
+  --foreground: #edf3ef;
+  --surface: #303f37;
+  --muted: #b6c7bd;
+  --border: #586b5e;
+  --accent: #b8d8c3;
+  --accent-foreground: #203c2d;
+  --field: #2a382f;
+  --canvas: #233028;
+  color-scheme: dark;
+}
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-border: var(--border);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-field: var(--field);
+  --color-canvas: var(--canvas);
+  --font-display: var(--type-display);
+  --font-sans: var(--type-body);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  :focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
